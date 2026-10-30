@@ -64,7 +64,7 @@ p {
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
-  content: url("./assets/clock_button.png");
+  content: url("./assets/clock_button.webp");
 }
 
 
@@ -84,7 +84,7 @@ p {
   -moz-transition-duration: 0.2s;
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
-  content: url("./assets/clock_button_Night.png");
+  content: url("./assets/clock_button_Night.webp");
 }
 
 .nighttime#buttonDayNightGraphic:hover {
@@ -285,11 +285,11 @@ button:enabled .buttonImageRight:active {
 }
 
 #minimap {
-  content: url("./assets/minimap_day.png");
+  content: url("./assets/minimap_day.webp");
 }
 
 .nighttime#minimap {
-  content: url("./assets/minimap_night.png");
+  content: url("./assets/minimap_night.webp");
 }
 
 .nighttime .infocardBody {

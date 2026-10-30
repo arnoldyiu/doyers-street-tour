@@ -1,22 +1,44 @@
-var images = [];
-function preload() {
-    for (var i = 0; i < arguments.length; i++) {
-        images[i] = new Image();
-        images[i].src = preload.arguments[i];
-    }
+// Keep references so the browser doesn't drop preloaded images
+var preloadedImages = {};
+
+function preload(url) {
+  if (preloadedImages[url]) return;
+  preloadedImages[url] = new Image();
+  preloadedImages[url].src = url;
 }
 
-preload(
-  "./assets/clock_button.png", "./assets/clock_button_Night.png", "./assets/infocardimg_01.jpg", "./assets/infocardimg_02.jpg", "./assets/infocardimg_03.jpg", "./assets/infocardimg_04.jpg", "./assets/infocardimg_05.jpg", "./assets/infocardimg_06.jpg", "./assets/infocardimg_07.jpg", "./assets/infocardimg_08.jpg", "./assets/infocardimg_09.jpg", "./assets/infocardimg_10.jpg", "./assets/infocardimg_11.jpg", "./assets/infocardimg_12.jpg", "./assets/bgALocation01View00.JPEG", "./assets/bgALocation01View01.JPEG", "./assets/bgALocation01View02.JPEG", "./assets/bgALocation01View03.JPEG", "./assets/bgALocation01View04.JPEG", "./assets/bgALocation01View05.JPEG", "./assets/bgALocation01View06.JPEG", "./assets/bgALocation01View07.JPEG", "./assets/bgALocation02View00.JPEG", "./assets/bgALocation02View01.JPEG", "./assets/bgALocation02View02.JPEG", "./assets/bgALocation02View03.JPEG", "./assets/bgALocation02View04.JPEG", "./assets/bgALocation02View05.JPEG", "./assets/bgALocation02View06.JPEG", "./assets/bgALocation02View07.JPEG", "./assets/bgALocation03View00.JPEG", "./assets/bgALocation03View01.JPEG", "./assets/bgALocation03View02.JPEG", "./assets/bgALocation03View03.JPEG", "./assets/bgALocation03View04.JPEG", "./assets/bgALocation03View05.JPEG", "./assets/bgALocation03View06.JPEG", "./assets/bgALocation03View07.JPEG", "./assets/bgALocation04View00.JPEG", "./assets/bgALocation04View01.JPEG", "./assets/bgALocation04View02.JPEG", "./assets/bgALocation04View03.JPEG", "./assets/bgALocation04View04.JPEG", "./assets/bgALocation04View05.JPEG", "./assets/bgALocation04View06.JPEG", "./assets/bgALocation04View07.JPEG", "./assets/bgALocation05View00.JPEG", "./assets/bgALocation05View01.JPEG", "./assets/bgALocation05View02.JPEG", "./assets/bgALocation05View03.JPEG", "./assets/bgALocation05View04.JPEG", "./assets/bgALocation05View05.JPEG", "./assets/bgALocation05View06.JPEG", "./assets/bgALocation05View07.JPEG", "./assets/bgALocation06View00.JPEG", "./assets/bgALocation06View01.JPEG", "./assets/bgALocation06View02.JPEG", "./assets/bgALocation06View03.JPEG", "./assets/bgALocation06View04.JPEG", "./assets/bgALocation06View05.JPEG", "./assets/bgALocation06View06.JPEG", "./assets/bgALocation06View07.JPEG", "./assets/bgPLocation01View00.JPEG", "./assets/bgPLocation01View01.JPEG", "./assets/bgPLocation01View02.JPEG", "./assets/bgPLocation01View03.JPEG", "./assets/bgPLocation01View04.JPEG", "./assets/bgPLocation01View05.JPEG", "./assets/bgPLocation01View06.JPEG", "./assets/bgPLocation01View07.JPEG", "./assets/bgPLocation02View00.JPEG", "./assets/bgPLocation02View01.JPEG", "./assets/bgPLocation02View02.JPEG", "./assets/bgPLocation02View03.JPEG", "./assets/bgPLocation02View04.JPEG", "./assets/bgPLocation02View05.JPEG", "./assets/bgPLocation02View06.JPEG", "./assets/bgPLocation02View07.JPEG", "./assets/bgPLocation03View00.JPEG", "./assets/bgPLocation03View01.JPEG", "./assets/bgPLocation03View02.JPEG", "./assets/bgPLocation03View03.JPEG", "./assets/bgPLocation03View04.JPEG", "./assets/bgPLocation03View05.JPEG", "./assets/bgPLocation03View06.JPEG", "./assets/bgPLocation03View07.JPEG", "./assets/bgPLocation04View00.JPEG", "./assets/bgPLocation04View01.JPEG", "./assets/bgPLocation04View02.JPEG", "./assets/bgPLocation04View03.JPEG", "./assets/bgPLocation04View04.JPEG", "./assets/bgPLocation04View05.JPEG", "./assets/bgPLocation04View06.JPEG", "./assets/bgPLocation04View07.JPEG", "./assets/bgPLocation05View00.JPEG", "./assets/bgPLocation05View01.JPEG", "./assets/bgPLocation05View02.JPEG", "./assets/bgPLocation05View03.JPEG", "./assets/bgPLocation05View04.JPEG", "./assets/bgPLocation05View05.JPEG", "./assets/bgPLocation05View06.JPEG", "./assets/bgPLocation05View07.JPEG", "./assets/bgPLocation06View00.JPEG", "./assets/bgPLocation06View01.JPEG", "./assets/bgPLocation06View02.JPEG", "./assets/bgPLocation06View03.JPEG", "./assets/bgPLocation06View04.JPEG", "./assets/bgPLocation06View05.JPEG", "./assets/bgPLocation06View06.JPEG", "./assets/bgPLocation06View07"
-);
+// Small UI images used later on (night mode graphics, info card photos)
+[
+  "./assets/clock_button_Night.webp", "./assets/minimap_night.webp",
+  "./assets/navBtnFw_Night.png", "./assets/navBtnBw_Night.png",
+  "./assets/infocardimg_01.webp", "./assets/infocardimg_02.webp", "./assets/infocardimg_03.webp",
+  "./assets/infocardimg_04.webp", "./assets/infocardimg_05.webp", "./assets/infocardimg_06.webp",
+  "./assets/infocardimg_07.webp", "./assets/infocardimg_08.webp", "./assets/infocardimg_09.webp",
+  "./assets/infocardimg_10.webp", "./assets/infocardimg_11.webp", "./assets/infocardimg_12.webp"
+].forEach(preload);
+
+function backgroundUrl(timeOfDay, location, view) {
+  return "./assets/bg" + timeOfDay + "Location0" + location + "View0" + view + ".webp";
+}
+
+// Load only the backgrounds you can reach in one step, instead of all 96 up front
+function preloadNeighbors() {
+  var time = isNightTime ? "P" : "A";
+  var otherTime = isNightTime ? "A" : "P";
+  preload(backgroundUrl(time, currentLocation, (currentView + 1) % 8));
+  preload(backgroundUrl(time, currentLocation, (currentView + 7) % 8));
+  preload(backgroundUrl(otherTime, currentLocation, currentView));
+  if (currentLocation > 1) preload(backgroundUrl(time, currentLocation - 1, currentView));
+  if (currentLocation < 6) preload(backgroundUrl(time, currentLocation + 1, currentView));
+}
 
 
-var sfxHover = new Audio('./assets/sfx_hover.wav');
-var sfxSelect = new Audio('./assets/sfx_select.wav');
-var sfxDayTime = new Audio('./assets/sfx_daytime.wav');
-var sfxNightTime = new Audio('./assets/sfx_nighttime.wav');
-var sfxMapMarker = new Audio('./assets/sfx_mapmarker.wav');
-var sfxReturn = new Audio('./assets/sfx_return.wav');
+var sfxHover = new Audio('./assets/sfx_hover.mp3');
+var sfxSelect = new Audio('./assets/sfx_select.mp3');
+var sfxDayTime = new Audio('./assets/sfx_daytime.mp3');
+var sfxNightTime = new Audio('./assets/sfx_nighttime.mp3');
+var sfxMapMarker = new Audio('./assets/sfx_mapmarker.mp3');
+var sfxReturn = new Audio('./assets/sfx_return.mp3');
 
 // Rewind before playing so rapid triggers restart the sound instead of being ignored
 function playSfx(sfx) {
@@ -48,7 +70,7 @@ var mapView = [0, 1, 2, 3, 4, 5, 6, 7];
 var currentLocation = 1;
 var currentView = 0;
 var infoCardTitleIndex = ["Peachy's (5 Doyers St.)", "U.S. Post Office (6 Doyers St.)", "Apotheke Chinatown (9 Doyers St.)", "Blue Agave Pulquería NYC (11 Doyers St.)", "Nom Wah Tea Parlor (13–15 Doyers St.)", "Toy Apple Beauty & Barber Salon (16 Doyers St.)", "Chinese Theater", "Chatham Club", "Sanitary Aid Society Housing", "Mandarin Tea Garden", "History of Nom Wah Tea Parlor", "The Future of Chinatown's Barbershops?"];
-var infoCardImgIndex = ["infocardimg_01.jpg", "infocardimg_02.jpg", "infocardimg_03.jpg", "infocardimg_04.jpg", "infocardimg_05.jpg", "infocardimg_06.jpg", "infocardimg_07.jpg", "infocardimg_08.jpg", "infocardimg_09.jpg", "infocardimg_10.jpg", "infocardimg_11.jpg", "infocardimg_12.jpg"];
+var infoCardImgIndex = ["infocardimg_01.webp", "infocardimg_02.webp", "infocardimg_03.webp", "infocardimg_04.webp", "infocardimg_05.webp", "infocardimg_06.webp", "infocardimg_07.webp", "infocardimg_08.webp", "infocardimg_09.webp", "infocardimg_10.webp", "infocardimg_11.webp", "infocardimg_12.webp"];
 var infoCardDescrIndex = ["A downstairs bar serving up craft cocktails and small bites with a funky, retro Asian flair. It's managed by the proprietors of Chinese Tuxedo, a contemporary Chinese fine-dining restaurant spanning two floors.", "In the (un)likely event you're eating your heart out at Nom Wah <i>and</i> want to write home at the same time—with the Post Office right by your side, consider those postcards raving about the best dim sum of your life as good as sent.", "An apothecary-themed bar with a vintage, speakeasy-like atmosphere. The host of many a number of private dinner events and live band performances, this off-the-beaten-path hideaway is a nightlife favorite for locals and tourists alike.", "Underground restaurant and bar offering creative cocktails and nibbles that blend Mexican flavors with an American twist. Apparently, their vegetarian burritos are really good—too bad I only eat meat.", "A time-honored dim sum restaurant tucked in the heart of Chinatown, Nom Wah Tea Parlor serves a variety of classic, made-to-order dim sum dishes that have delighted its patrons since 1920.", "A small-time Chinese barbershop with a traditional, nostalgic flair. Known for its expert stylists and nostalgic atmosphere, Toy Apple is a go-to spot for both classic cuts and contemporary hair designs.", "From 1893 to 1911, 5–7 Doyers Street was home to the very first Chinese-language theater in New York City. It was also the site of a fundraising campaign to aid New York's Jewish community during the Kishinev massacre in 1903.", "A notorious underground dive for politicians, gangsters, and celebrities. Its true purpose remains shrouded in secret, but modern rumors suggest that it was used as a hideout for illegal activities such as gambling and racketeering.", "In 1885, the Doyers Street Sanitary Aid Society provided crucial housing support for Manhattan Chinatown's less fortunate—a move reflecting the Chinese American community's broader efforts to improve living conditions in urban areas.", "Mandarin Tea Garden operated in the early 1900s, apparently quite popular with white Bowery workingmen and uptown slummers. The owners were known for hosting tours around Chinatown for their clientele.", "Nom Wah was originally located at 13–15 Doyers Street, only moving to its current location at 11-13 after a lease loss in 1968. It used to lack a menu, only offering dish names scrawled on the back of a business card as a concession to hungry foreigners.", "In recent years, Chinatown's barbershops have faced a dwindling customer base consisting of aging regulars and few newcomers. As rents rise and younger folks globalize, they risk fading into obscurity from New York's cultural landscape."];
 var infoCardTitle = infoCardTitleIndex[0];
 var infoCardImg = infoCardImgIndex[0];
@@ -204,10 +226,11 @@ function returnFileName() {
 }
 
 function updateBackground() {
-  document.body.style.cssText += `background-image: url(${'./assets/' + updateFileName() + '.JPEG'})`;
+  document.body.style.backgroundImage = `url(${backgroundUrl(checkNightTime(), currentLocation, currentView)})`;
   // console.log("Background updated.");
   showHideNavButtons();
   updateMapMarkerLocation();
+  preloadNeighbors();
 }
 
 function updateInfoCard() {

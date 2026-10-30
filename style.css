@@ -208,8 +208,7 @@ button:enabled .buttonImageRight:active {
   content: url("./assets/mapmarker_0.5x.png");
 }
 
-.mapMarker:has(+ .mapMarkerMask:enabled:hover),
-.mapMarker:has(+ .mapMarkerMask:focus-visible) {
+.mapMarker:has(+ .mapMarkerMask:enabled:hover) {
   content: url("./assets/mapmarker_hover_0.5x.png");
 }
 
@@ -223,17 +222,6 @@ button:enabled .buttonImageRight:active {
 
 .mapMarkerMask:enabled > div {
   cursor: pointer;
-}
-
-/* The focus outline goes around the pin, not the empty button box */
-.mapMarkerMask:focus-visible {
-  outline: none;
-}
-
-.mapMarkerMask:focus-visible > div {
-  outline: 3px solid rgb(255, 200, 0);
-  outline-offset: 2px;
-  border-radius: 4px;
 }
 
 /* ---- Info card ---- */

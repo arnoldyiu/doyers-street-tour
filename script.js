@@ -98,7 +98,7 @@
     marker.innerHTML = `
       <p aria-hidden="true">${i + 1}</p>
       <img class="mapMarker poabsolute" alt="">
-      <button class="mapMarkerMask"><div class="poabsolute"></div></button>`;
+      <button class="mapMarkerMask" tabindex="-1"><div class="poabsolute"></div></button>`;
 
     const button = marker.querySelector("button");
     button.addEventListener("mouseover", () => playSound("hover"));

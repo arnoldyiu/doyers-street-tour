@@ -41,5 +41,3 @@ Then visit http://localhost:8000.
 ## License
 
 [MIT](LICENSE.txt).
-
-Prototyped on CodePen.

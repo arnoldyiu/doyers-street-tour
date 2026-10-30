@@ -1,6 +1,3 @@
-// All the content for the tour lives here. Edit this file to change text,
-// links or marker positions; script.js doesn't need to change.
-
 // The six places on Doyers St, in walking order. Each has a day and night version.
 const PLACES = [
   {

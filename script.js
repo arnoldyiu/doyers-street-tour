@@ -1,6 +1,3 @@
-// Doyers Street tour: walk the street, look around, and click markers to learn about each place.
-// Content (places, markers, minimap) lives in tour-data.js.
-
 (function () {
   "use strict";
 
@@ -19,9 +16,6 @@
   const byId = (id) => document.getElementById(id);
   const stage = byId("stage");
 
-  // ---- Layout ----
-
-  // Everything is positioned on a fixed-size stage; scale it to fit the window
   function fitStage() {
     const scale = Math.min(window.innerWidth / STAGE_WIDTH, window.innerHeight / STAGE_HEIGHT);
     stage.style.setProperty("--scale", scale);
@@ -30,8 +24,6 @@
   fitStage();
   window.addEventListener("resize", fitStage);
 
-  // ---- State ----
-
   let isNight = false;
   let currentLocation = 1; // 1-6
   let currentView = 0; // 0-7, turning right goes up
@@ -39,8 +31,6 @@
   let infoCardOpener = null; // the marker button to return focus to when the card closes
 
   const timeOfDay = () => (isNight ? "night" : "day");
-
-  // ---- Sound ----
 
   const sounds = {
     hover: new Audio("./assets/sfx_hover.mp3"),
@@ -59,8 +49,6 @@
     sound.play().catch(() => {});
   }
 
-  // ---- Preloading ----
-
   // Keep references so the browser doesn't drop preloaded images
   const preloaded = {};
 
@@ -74,7 +62,7 @@
     return `./assets/bg${night ? "P" : "A"}Location0${location}View0${view}.webp`;
   }
 
-  // Load only the backgrounds you can reach in one step, instead of all 96 up front
+  // Only load the backgrounds you can reach in one step
   function preloadNeighbors() {
     preload(backgroundUrl(isNight, currentLocation, (currentView + 1) % VIEW_COUNT));
     preload(backgroundUrl(isNight, currentLocation, (currentView + VIEW_COUNT - 1) % VIEW_COUNT));
@@ -83,14 +71,10 @@
     if (currentLocation < LOCATION_COUNT) preload(backgroundUrl(isNight, currentLocation + 1, currentView));
   }
 
-  // Small images used later on (night mode graphics, info card photos)
   ["clock_button_Night.webp", "minimap_night.webp", "navBtnFw_Night.png", "navBtnBw_Night.png"]
     .concat(PLACES.flatMap((place) => [place.day.image, place.night.image]))
     .forEach((file) => preload("./assets/" + file));
 
-  // ---- Map markers ----
-
-  // One marker element per place, shown and moved as you look around
   const markerElements = PLACES.map((_, i) => {
     const marker = document.createElement("div");
     marker.className = "buttonPosition buttonNav poabsolute";
@@ -124,8 +108,6 @@
     }
   }
 
-  // ---- Rendering ----
-
   function isValidLocation(location) {
     return location >= 1 && location <= LOCATION_COUNT;
   }
@@ -153,7 +135,6 @@
     byId("minimapPointer").style.transform = `translate(${x}px, ${y}px)`;
   }
 
-  // Tell screen reader users where they are and what they can see
   function announce(prefix = "") {
     const titles = visibleMarkers().map(({ place }) => placeInfo(place - 1).title);
     const inView = titles.length ? `In view: ${titles.join(", ")}.` : "No places in view.";
@@ -168,8 +149,6 @@
     updateMinimap();
     preloadNeighbors();
   }
-
-  // ---- Info card ----
 
   function setButtonsDisabled(disabled) {
     for (const button of document.getElementsByTagName("button")) {
@@ -202,8 +181,6 @@
     if (infoCardOpener) infoCardOpener.focus();
   }
 
-  // ---- Movement ----
-
   function turn(step) {
     currentView = (currentView + step + VIEW_COUNT) % VIEW_COUNT;
     render();
@@ -211,7 +188,6 @@
     playSound("select");
   }
 
-  // direction: 1 = forward, -1 = backward
   function walk(direction) {
     if (canWalk(direction)) {
       currentLocation += walkStep(direction);
@@ -230,8 +206,6 @@
     announce(isNight ? "Switched to night. " : "Switched to day. ");
     playSound(isNight ? "night" : "day");
   }
-
-  // ---- Input ----
 
   byId("buttonDayNight").querySelector("button").addEventListener("click", toggleDayNight);
   byId("buttonViewLeft").querySelector("button").addEventListener("click", () => turn(-1));
@@ -254,7 +228,6 @@
   document.addEventListener("keyup", (event) => {
     if (infoCardOpen) {
       if (event.key === "Escape") closeInfoCard();
-      // Don't move around behind an open info card
       return;
     }
     const action = KEY_ACTIONS[event.code];
@@ -266,8 +239,6 @@
       console.log(`{ x: ${event.offsetX - 800}, y: ${event.offsetY - 133} }`);
     });
   }
-
-  // ---- Start ----
 
   // Wait for the loading screen to finish before showing the tour
   window.addEventListener("load", () => {

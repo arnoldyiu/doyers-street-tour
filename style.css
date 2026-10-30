@@ -1,5 +1,3 @@
-/* ---- Base ---- */
-
 html, body {
   margin: 0;
   height: 100%;
@@ -28,14 +26,12 @@ p, h2 {
   margin: 0;
 }
 
-/* Show where keyboard focus is (mouse clicks don't trigger this) */
 :focus-visible {
   outline: 3px solid rgb(255, 200, 0);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Hidden on screen but still read by screen readers */
 .visuallyHidden {
   position: absolute;
   width: 1px;
@@ -61,8 +57,7 @@ p, h2 {
   font-style: normal;
 }
 
-/* ---- Stage ----
-   Every position below is in pixels on a 1512×851 stage. script.js sets --scale
+/* Every position below is in pixels on a 1512×851 stage. script.js sets --scale
    so the whole stage shrinks or grows to fit the window. */
 
 #stage {
@@ -81,8 +76,6 @@ p, h2 {
   position: absolute;
   inset: 0;
 }
-
-/* ---- Minimap ---- */
 
 .minimapContainer {
   position: absolute;
@@ -103,8 +96,6 @@ p, h2 {
   content: url("./assets/minimap_figure.png");
   top: -20px;
 }
-
-/* ---- Day/night button ---- */
 
 #clickhere {
   top: 120px;
@@ -131,8 +122,6 @@ button:hover #buttonDayNightGraphic,
 button:focus-visible #buttonDayNightGraphic {
   transform: rotate(180deg);
 }
-
-/* ---- Turn left/right buttons ---- */
 
 .buttonView {
   left: 50%;
@@ -163,8 +152,6 @@ button:enabled .buttonImageRight:active {
   content: url("./assets/btnR_press.png");
 }
 
-/* ---- Walk forward/backward buttons ---- */
-
 .buttonNavForward {
   top: 560px;
 }
@@ -188,8 +175,6 @@ button:enabled .buttonImageRight:active {
 .nighttime .buttonImageNavBackward {
   content: url("./assets/navBtnBw_Night.png");
 }
-
-/* ---- Map markers ---- */
 
 .buttonPosition {
   z-index: 0;
@@ -223,8 +208,6 @@ button:enabled .buttonImageRight:active {
 .mapMarkerMask:enabled > div {
   cursor: pointer;
 }
-
-/* ---- Info card ---- */
 
 .infocard {
   display: none;
@@ -334,8 +317,6 @@ button:enabled .buttonImageRight:active {
   background-color: rgb(170, 170, 170);
   z-index: 950;
 }
-
-/* ---- Reduced motion ---- */
 
 @media (prefers-reduced-motion: reduce) {
   #buttonDayNightGraphic {

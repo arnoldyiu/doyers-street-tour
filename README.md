@@ -16,7 +16,7 @@ This was built in 2024 as my final project for an undergraduate illustration cou
 | Walk forward/backward | Buttons at the bottom (when facing along the street) | ``↑``/``↓`` or ``W``/``S`` |
 | Switch day/night | Clock in the top right | – |
 | Learn about a landmark | Click a marker | – |
-| Close a card | Close | Escape |
+| Close a card | Close | ``Esc`` |
 
 ## How to run
 

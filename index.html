@@ -8,14 +8,13 @@
   <link rel="stylesheet" href="https://use.typekit.net/fpj0dsx.css">
 </head>
 
-<body onload="updateBackground(); updateInfoCard(); showViewButtons();">
+<body>
   <div id="clickhere" class="poabsolute" style="top: 120px; left: 50%; transform: translateX(400px); display: none;">
     <img src="./assets/clickhere.webp" width="200">
   </div>
   <div id="mousePos"
     style="width: 1512px; height: 851px; position: absolute; left: 50%; top: 0%; background: rgba(255,0,0,0); transform: translateX(-50%)">
   </div>
-  <!-- partial:index.partial.html -->
   <div class="minimapContainer" id="minimapContainer" style="display: none;">
     <img class="minimap poabsolute" id="minimap" width="256">
     <img class="minimapPointer poabsolute" id="minimapPointer" width="24">
@@ -39,7 +38,7 @@
           class="infocardBtn infocardBtnLearnMore ffMetaWebProCondensed400" id="infocardBtnLearnMore">
           <p class="infocardBtnTxt">Learn More</p>
         </a>
-        <button onclick="closeInfoCard();" class="infocardBtn infocardBtnClose ffMetaWebProCondensed400"
+        <button class="infocardBtn infocardBtnClose ffMetaWebProCondensed400"
           id="infocardBtnClose">
           <p class="infocardBtnTxt">Close</p>
         </button>
@@ -49,84 +48,42 @@
   </div>
 
   <div class="poabsolute buttonDayNight" id="buttonDayNight" style="display: none;">
-    <button onclick="toggleDayNight()">
+    <button>
       <img id="buttonDayNightGraphic" width="128">
     </button>
   </div>
   <div class="poabsolute buttonView" id="buttonViewLeftContainer" style="display: none;">
     <div id="buttonViewLeft">
-      <button onclick="viewTurnLeft()">
+      <button>
         <img class="buttonImageLeft">
       </button>
     </div>
   </div>
   <div class="poabsolute buttonView" id="buttonViewRightContainer" style="display: none;">
     <div id="buttonViewRight">
-      <button onclick="viewTurnRight()">
+      <button>
         <img class="buttonImageRight">
       </button>
     </div>
   </div>
 
-  <!-- Map Markers -->
-
-  <div id="mapMarkerOne" class="buttonPosition buttonNav poabsolute" style="display: none;">
-    <p>1</p>
-    <img class="mapMarker poabsolute">
-    <button onclick="locationOne(); mapMarkerClick();" class="mapMarkerMask">
-      <div class="poabsolute"></div>
-    </button>
-  </div>
-  <div id="mapMarkerTwo" class="buttonPosition buttonNav poabsolute" style="display: none;">
-    <p>2</p>
-    <img class="mapMarker poabsolute">
-    <button onclick="locationTwo(); mapMarkerClick();" class="mapMarkerMask">
-      <div class="poabsolute"></div>
-    </button>
-  </div>
-  <div id="mapMarkerThree" class="buttonPosition buttonNav poabsolute" style="display: none;">
-    <p>3</p>
-    <img class="mapMarker poabsolute">
-    <button onclick="locationThree(); mapMarkerClick();" class="mapMarkerMask">
-      <div class="poabsolute"></div>
-    </button>
-  </div>
-  <div id="mapMarkerFour" class="buttonPosition buttonNav poabsolute" style="display: none;">
-    <p>4</p>
-    <img class="mapMarker poabsolute">
-    <button onclick="locationFour(); mapMarkerClick();" class="mapMarkerMask">
-      <div class="poabsolute"></div>
-    </button>
-  </div>
-  <div id="mapMarkerFive" class="buttonPosition buttonNav poabsolute" style="display: none;">
-    <p>5</p>
-    <img class="mapMarker poabsolute">
-    <button onclick="locationFive(); mapMarkerClick();" class="mapMarkerMask">
-      <div class="poabsolute"></div>
-    </button>
-  </div>
-  <div id="mapMarkerSix" class="buttonPosition buttonNav poabsolute" style="display: none;">
-    <p>6</p>
-    <img class="mapMarker poabsolute">
-    <button onclick="locationSix(); mapMarkerClick();" class="mapMarkerMask">
-      <div class="poabsolute"></div>
-    </button>
-  </div>
+  <!-- Map markers (created by script.js from tour-data.js) -->
+  <div id="mapMarkers"></div>
 
   <!-- Navigation Buttons -->
 
   <div class="poabsolute xCenter buttonLocation buttonNavForward" id="buttonNavForward" style="display: none;">
     <div>
-      <button onclick="locMoveForward()"><img class="buttonImageNavForward" id="buttonImageNavForward"></button>
+      <button><img class="buttonImageNavForward" id="buttonImageNavForward"></button>
     </div>
   </div>
   <div class="poabsolute xCenter buttonLocation buttonNavBackward" id="buttonNavBackward" style="display: none;">
     <div>
-      <button onclick="locMoveBackward()"><img class="buttonImageNavBackward" id="buttonImageNavBackward"></button>
+      <button><img class="buttonImageNavBackward" id="buttonImageNavBackward"></button>
     </div>
   </div>
 
-  <!-- partial -->
+  <script src="./tour-data.js"></script>
   <script src="./script.js"></script>
 
 </body>

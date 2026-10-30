@@ -79,7 +79,7 @@ p {
 }
 
 
-.nighttime#buttonDayNightGraphic {
+.nighttime #buttonDayNightGraphic {
   -webkit-transition-duration: 0.2s;
   -moz-transition-duration: 0.2s;
   -o-transition-duration: 0.2s;
@@ -87,7 +87,7 @@ p {
   content: url("./assets/clock_button_Night.webp");
 }
 
-.nighttime#buttonDayNightGraphic:hover {
+.nighttime #buttonDayNightGraphic:hover {
   -webkit-transition-duration: 0.2s;
   -moz-transition-duration: 0.2s;
   -o-transition-duration: 0.2s;
@@ -138,11 +138,11 @@ button:enabled .buttonImageRight:active {
   content: url("./assets/navBtnBw.png");
 }
 
-.nighttime.buttonImageNavForward {
+.nighttime .buttonImageNavForward {
   content: url("./assets/navBtnFw_Night.png");
 }
 
-.nighttime.buttonImageNavBackward {
+.nighttime .buttonImageNavBackward {
   content: url("./assets/navBtnBw_Night.png");
 }
 
@@ -252,7 +252,6 @@ button:enabled .buttonImageRight:active {
   margin-left: auto;
   margin-right: auto;
   height: 219px;
-  content: url("./assets/loading_scr.jpg");
 }
 
 .mapMarker {
@@ -288,7 +287,7 @@ button:enabled .buttonImageRight:active {
   content: url("./assets/minimap_day.webp");
 }
 
-.nighttime#minimap {
+.nighttime #minimap {
   content: url("./assets/minimap_night.webp");
 }
 
@@ -340,22 +339,3 @@ button:enabled .buttonImageRight:active {
   transform: translateY(-50%);
 }
 
-/*
-#mapMarkerOne {
-}
-
-#mapMarkerTwo {
-}
-
-#mapMarkerThree {
-}
-
-#mapMarkerFour {
-}
-
-#mapMarkerFive {
-}
-
-#mapMarkerSix {
-}
-*/

@@ -4,7 +4,7 @@ a, a:link, a:visited, a:hover, a:active {
 }
 
 body {
-  background: black url("../assets/loading_scr.jpg");
+  background: black url("./assets/loading_scr.jpg");
   background-position: center 0;
   background-repeat: no-repeat;
   background-size: 1512px;
@@ -64,12 +64,9 @@ p {
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   transform: rotate(0deg);
-  content: url("../assets/clock_button.png");
+  content: url("./assets/clock_button.png");
 }
 
-#buttonDayNightFrame {
-  content: url("../assets/clock_frame.png");
-}
 
 #buttonDayNightGraphic:hover {
   -webkit-transition-duration: 0.2s;
@@ -87,7 +84,7 @@ p {
   -moz-transition-duration: 0.2s;
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
-  content: url("../assets/clock_button_Night.png");
+  content: url("./assets/clock_button_Night.png");
 }
 
 .nighttime#buttonDayNightGraphic:hover {
@@ -118,35 +115,35 @@ p {
 }
 
 .buttonImageLeft {
-  content: url("../assets/btnL.png");
+  content: url("./assets/btnL.png");
 }
 
 .buttonImageRight {
-  content: url("../assets/btnR.png");
+  content: url("./assets/btnR.png");
 }
 
 button:enabled .buttonImageLeft:active {
-  content: url("../assets/btnL_press.png");
+  content: url("./assets/btnL_press.png");
 }
 
 button:enabled .buttonImageRight:active {
-  content: url("../assets/btnR_press.png");
+  content: url("./assets/btnR_press.png");
 }
 
 .buttonImageNavForward {
-  content: url("../assets/navBtnFw.png");
+  content: url("./assets/navBtnFw.png");
 }
 
 .buttonImageNavBackward {
-  content: url("../assets/navBtnBw.png");
+  content: url("./assets/navBtnBw.png");
 }
 
 .nighttime.buttonImageNavForward {
-  content: url("../assets/navBtnFw_Night.png");
+  content: url("./assets/navBtnFw_Night.png");
 }
 
 .nighttime.buttonImageNavBackward {
-  content: url("../assets/navBtnBw_Night.png");
+  content: url("./assets/navBtnBw_Night.png");
 }
 
 .buttonNavForward {
@@ -255,15 +252,15 @@ button:enabled .buttonImageRight:active {
   margin-left: auto;
   margin-right: auto;
   height: 219px;
-  content: url("../assets/loading_scr.jpg");
+  content: url("./assets/loading_scr.jpg");
 }
 
 .mapMarker {
-  content: url("../assets/mapmarker_0.5x.png");
+  content: url("./assets/mapmarker_0.5x.png");
 }
 
 .mapMarker:has(+ .mapMarkerMask:enabled:hover) {
-  content: url("../assets/mapmarker_hover_0.5x.png");
+  content: url("./assets/mapmarker_hover_0.5x.png");
 }
 
 .mapMarkerMask:enabled>div {
@@ -283,16 +280,16 @@ button:enabled .buttonImageRight:active {
 }
 
 .minimapPointer {
-  content: url("../assets/minimap_figure.png");
+  content: url("./assets/minimap_figure.png");
   top: -20px;
 }
 
 #minimap {
-  content: url("../assets/minimap_day.png");
+  content: url("./assets/minimap_day.png");
 }
 
 .nighttime#minimap {
-  content: url("../assets/minimap_night.png");
+  content: url("./assets/minimap_night.png");
 }
 
 .nighttime .infocardBody {

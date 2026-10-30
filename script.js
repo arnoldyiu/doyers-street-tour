@@ -7,7 +7,7 @@ function preload() {
 }
 
 preload(
-  "clock_button.png", "clock_button_Night.png", "infocardimg_01.jpg", "infocardimg_02.jpg", "infocardimg_03.jpg", "infocardimg_04.jpg", "infocardimg_05.jpg", "infocardimg_06.jpg", "infocardimg_07.jpg", "infocardimg_08.jpg", "infocardimg_09.jpg", "infocardimg_10.jpg", "infocardimg_11.jpg", "infocardimg_12.jpg", "./assets/bgALocation01View00.JPEG", "./assets/bgALocation01View01.JPEG", "./assets/bgALocation01View02.JPEG", "./assets/bgALocation01View03.JPEG", "./assets/bgALocation01View04.JPEG", "./assets/bgALocation01View05.JPEG", "./assets/bgALocation01View06.JPEG", "./assets/bgALocation01View07.JPEG", "./assets/bgALocation02View00.JPEG", "./assets/bgALocation02View01.JPEG", "./assets/bgALocation02View02.JPEG", "./assets/bgALocation02View03.JPEG", "./assets/bgALocation02View04.JPEG", "./assets/bgALocation02View05.JPEG", "./assets/bgALocation02View06.JPEG", "./assets/bgALocation02View07.JPEG", "./assets/bgALocation03View00.JPEG", "./assets/bgALocation03View01.JPEG", "./assets/bgALocation03View02.JPEG", "./assets/bgALocation03View03.JPEG", "./assets/bgALocation03View04.JPEG", "./assets/bgALocation03View05.JPEG", "./assets/bgALocation03View06.JPEG", "./assets/bgALocation03View07.JPEG", "./assets/bgALocation04View00.JPEG", "./assets/bgALocation04View01.JPEG", "./assets/bgALocation04View02.JPEG", "./assets/bgALocation04View03.JPEG", "./assets/bgALocation04View04.JPEG", "./assets/bgALocation04View05.JPEG", "./assets/bgALocation04View06.JPEG", "./assets/bgALocation04View07.JPEG", "./assets/bgALocation05View00.JPEG", "./assets/bgALocation05View01.JPEG", "./assets/bgALocation05View02.JPEG", "./assets/bgALocation05View03.JPEG", "./assets/bgALocation05View04.JPEG", "./assets/bgALocation05View05.JPEG", "./assets/bgALocation05View06.JPEG", "./assets/bgALocation05View07.JPEG", "./assets/bgALocation06View00.JPEG", "./assets/bgALocation06View01.JPEG", "./assets/bgALocation06View02.JPEG", "./assets/bgALocation06View03.JPEG", "./assets/bgALocation06View04.JPEG", "./assets/bgALocation06View05.JPEG", "./assets/bgALocation06View06.JPEG", "./assets/bgALocation06View07.JPEG", "./assets/bgPLocation01View00.JPEG", "./assets/bgPLocation01View01.JPEG", "./assets/bgPLocation01View02.JPEG", "./assets/bgPLocation01View03.JPEG", "./assets/bgPLocation01View04.JPEG", "./assets/bgPLocation01View05.JPEG", "./assets/bgPLocation01View06.JPEG", "./assets/bgPLocation01View07.JPEG", "./assets/bgPLocation02View00.JPEG", "./assets/bgPLocation02View01.JPEG", "./assets/bgPLocation02View02.JPEG", "./assets/bgPLocation02View03.JPEG", "./assets/bgPLocation02View04.JPEG", "./assets/bgPLocation02View05.JPEG", "./assets/bgPLocation02View06.JPEG", "./assets/bgPLocation02View07.JPEG", "./assets/bgPLocation03View00.JPEG", "./assets/bgPLocation03View01.JPEG", "./assets/bgPLocation03View02.JPEG", "./assets/bgPLocation03View03.JPEG", "./assets/bgPLocation03View04.JPEG", "./assets/bgPLocation03View05.JPEG", "./assets/bgPLocation03View06.JPEG", "./assets/bgPLocation03View07.JPEG", "./assets/bgPLocation04View00.JPEG", "./assets/bgPLocation04View01.JPEG", "./assets/bgPLocation04View02.JPEG", "./assets/bgPLocation04View03.JPEG", "./assets/bgPLocation04View04.JPEG", "./assets/bgPLocation04View05.JPEG", "./assets/bgPLocation04View06.JPEG", "./assets/bgPLocation04View07.JPEG", "./assets/bgPLocation05View00.JPEG", "./assets/bgPLocation05View01.JPEG", "./assets/bgPLocation05View02.JPEG", "./assets/bgPLocation05View03.JPEG", "./assets/bgPLocation05View04.JPEG", "./assets/bgPLocation05View05.JPEG", "./assets/bgPLocation05View06.JPEG", "./assets/bgPLocation05View07.JPEG", "./assets/bgPLocation06View00.JPEG", "./assets/bgPLocation06View01.JPEG", "./assets/bgPLocation06View02.JPEG", "./assets/bgPLocation06View03.JPEG", "./assets/bgPLocation06View04.JPEG", "./assets/bgPLocation06View05.JPEG", "./assets/bgPLocation06View06.JPEG", "./assets/bgPLocation06View07"
+  "./assets/clock_button.png", "./assets/clock_button_Night.png", "./assets/infocardimg_01.jpg", "./assets/infocardimg_02.jpg", "./assets/infocardimg_03.jpg", "./assets/infocardimg_04.jpg", "./assets/infocardimg_05.jpg", "./assets/infocardimg_06.jpg", "./assets/infocardimg_07.jpg", "./assets/infocardimg_08.jpg", "./assets/infocardimg_09.jpg", "./assets/infocardimg_10.jpg", "./assets/infocardimg_11.jpg", "./assets/infocardimg_12.jpg", "./assets/bgALocation01View00.JPEG", "./assets/bgALocation01View01.JPEG", "./assets/bgALocation01View02.JPEG", "./assets/bgALocation01View03.JPEG", "./assets/bgALocation01View04.JPEG", "./assets/bgALocation01View05.JPEG", "./assets/bgALocation01View06.JPEG", "./assets/bgALocation01View07.JPEG", "./assets/bgALocation02View00.JPEG", "./assets/bgALocation02View01.JPEG", "./assets/bgALocation02View02.JPEG", "./assets/bgALocation02View03.JPEG", "./assets/bgALocation02View04.JPEG", "./assets/bgALocation02View05.JPEG", "./assets/bgALocation02View06.JPEG", "./assets/bgALocation02View07.JPEG", "./assets/bgALocation03View00.JPEG", "./assets/bgALocation03View01.JPEG", "./assets/bgALocation03View02.JPEG", "./assets/bgALocation03View03.JPEG", "./assets/bgALocation03View04.JPEG", "./assets/bgALocation03View05.JPEG", "./assets/bgALocation03View06.JPEG", "./assets/bgALocation03View07.JPEG", "./assets/bgALocation04View00.JPEG", "./assets/bgALocation04View01.JPEG", "./assets/bgALocation04View02.JPEG", "./assets/bgALocation04View03.JPEG", "./assets/bgALocation04View04.JPEG", "./assets/bgALocation04View05.JPEG", "./assets/bgALocation04View06.JPEG", "./assets/bgALocation04View07.JPEG", "./assets/bgALocation05View00.JPEG", "./assets/bgALocation05View01.JPEG", "./assets/bgALocation05View02.JPEG", "./assets/bgALocation05View03.JPEG", "./assets/bgALocation05View04.JPEG", "./assets/bgALocation05View05.JPEG", "./assets/bgALocation05View06.JPEG", "./assets/bgALocation05View07.JPEG", "./assets/bgALocation06View00.JPEG", "./assets/bgALocation06View01.JPEG", "./assets/bgALocation06View02.JPEG", "./assets/bgALocation06View03.JPEG", "./assets/bgALocation06View04.JPEG", "./assets/bgALocation06View05.JPEG", "./assets/bgALocation06View06.JPEG", "./assets/bgALocation06View07.JPEG", "./assets/bgPLocation01View00.JPEG", "./assets/bgPLocation01View01.JPEG", "./assets/bgPLocation01View02.JPEG", "./assets/bgPLocation01View03.JPEG", "./assets/bgPLocation01View04.JPEG", "./assets/bgPLocation01View05.JPEG", "./assets/bgPLocation01View06.JPEG", "./assets/bgPLocation01View07.JPEG", "./assets/bgPLocation02View00.JPEG", "./assets/bgPLocation02View01.JPEG", "./assets/bgPLocation02View02.JPEG", "./assets/bgPLocation02View03.JPEG", "./assets/bgPLocation02View04.JPEG", "./assets/bgPLocation02View05.JPEG", "./assets/bgPLocation02View06.JPEG", "./assets/bgPLocation02View07.JPEG", "./assets/bgPLocation03View00.JPEG", "./assets/bgPLocation03View01.JPEG", "./assets/bgPLocation03View02.JPEG", "./assets/bgPLocation03View03.JPEG", "./assets/bgPLocation03View04.JPEG", "./assets/bgPLocation03View05.JPEG", "./assets/bgPLocation03View06.JPEG", "./assets/bgPLocation03View07.JPEG", "./assets/bgPLocation04View00.JPEG", "./assets/bgPLocation04View01.JPEG", "./assets/bgPLocation04View02.JPEG", "./assets/bgPLocation04View03.JPEG", "./assets/bgPLocation04View04.JPEG", "./assets/bgPLocation04View05.JPEG", "./assets/bgPLocation04View06.JPEG", "./assets/bgPLocation04View07.JPEG", "./assets/bgPLocation05View00.JPEG", "./assets/bgPLocation05View01.JPEG", "./assets/bgPLocation05View02.JPEG", "./assets/bgPLocation05View03.JPEG", "./assets/bgPLocation05View04.JPEG", "./assets/bgPLocation05View05.JPEG", "./assets/bgPLocation05View06.JPEG", "./assets/bgPLocation05View07.JPEG", "./assets/bgPLocation06View00.JPEG", "./assets/bgPLocation06View01.JPEG", "./assets/bgPLocation06View02.JPEG", "./assets/bgPLocation06View03.JPEG", "./assets/bgPLocation06View04.JPEG", "./assets/bgPLocation06View05.JPEG", "./assets/bgPLocation06View06.JPEG", "./assets/bgPLocation06View07"
 );
 
 
@@ -18,11 +18,17 @@ var sfxNightTime = new Audio('./assets/sfx_nighttime.wav');
 var sfxMapMarker = new Audio('./assets/sfx_mapmarker.wav');
 var sfxReturn = new Audio('./assets/sfx_return.wav');
 
+// Rewind before playing so rapid triggers restart the sound instead of being ignored
+function playSfx(sfx) {
+  sfx.currentTime = 0;
+  sfx.play();
+}
+
 var mapMarkerMasks = document.getElementsByClassName("mapMarkerMask");
 
 for (var i = 0; i < mapMarkerMasks.length; i++) {
-  mapMarkerMasks[i].addEventListener('mouseover', function () {sfxHover.play();}, false);
-  mapMarkerMasks[i].addEventListener('click', function () {sfxMapMarker.play();}, false);
+  mapMarkerMasks[i].addEventListener('mouseover', function () {playSfx(sfxHover);}, false);
+  mapMarkerMasks[i].addEventListener('click', function () {playSfx(sfxMapMarker);}, false);
 }
 
 
@@ -168,7 +174,7 @@ function closeInfoCard() {
   for (const button of buttons) {
     button.disabled = false;
   }
-  sfxReturn.play();
+  playSfx(sfxReturn);
 }
 
 function openInfoCard() {
@@ -222,7 +228,7 @@ function toggleDayNight() {
   document.getElementById("minimap").classList.toggle("nighttime");
   updateBackground();
   updateInfoCard();
-  isNightTime ? sfxNightTime.play() : sfxDayTime.play();
+  isNightTime ? playSfx(sfxNightTime) : playSfx(sfxDayTime);
 }
 
 function viewTurnRight() {
@@ -233,7 +239,7 @@ function viewTurnRight() {
   // console.log(currentView);
   returnFileName();
   updateBackground();
-  sfxSelect.play();
+  playSfx(sfxSelect);
 }
 
 function viewTurnLeft() {
@@ -244,7 +250,7 @@ function viewTurnLeft() {
   // console.log(currentView);
   returnFileName();
   updateBackground();
-  sfxSelect.play();
+  playSfx(sfxSelect);
 }
 
 function addLocation() {
@@ -274,7 +280,7 @@ function locMoveBackward() {
   }
   returnFileName();
   updateBackground();
-  sfxSelect.play();
+  playSfx(sfxSelect);
 }
 
 function locMoveForward() {
@@ -286,7 +292,7 @@ function locMoveForward() {
   }
   returnFileName();
   updateBackground();
-  sfxSelect.play();
+  playSfx(sfxSelect);
 }
 
 function mapMarkerClick() {
@@ -363,6 +369,10 @@ document.body.onkeydown = function (e) {
 }
 
 document.body.onkeyup = function (e) {
+  // Don't move around behind an open info card
+  if (document.getElementById("infocard").style.display === "initial") {
+    return;
+  }
   if (e.key == "a" ||
     e.code == "KeyA" ||
     e.keyCode == 65

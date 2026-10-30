@@ -15,7 +15,7 @@ This was built in 2024 as my final project for an undergraduate illustration cou
 | Look around | Arrow buttons on the sides | ``←``/``→`` or ``A``/``D`` |
 | Walk forward/backward | Buttons at the bottom (when facing along the street) | ``↑``/``↓`` or ``W``/``S`` |
 | Switch day/night | Clock in the top right | – |
-| Learn about a place | Click a marker | – |
+| Learn about a landmark | Click a marker | – |
 | Close a card | Close | Escape |
 
 ## How to run
@@ -37,12 +37,6 @@ Then visit http://localhost:8000.
 | `script.js` | Movement controls, map rendering, audio, and info cards |
 | `tour-data.js` | Data for landmarks, links, map markers, and minimap positions |
 | `assets/` | Street photos (`bg{A\|P}Location0{1-6}View0{0-7}.webp`, A = day, P = night), UI images, and sounds |
-
-### Making edits
-
-Text, links, and marker positions all live in `tour-data.js`, so changing them doesn't involve touching the code.
-
-To place a marker, set `DEV_MODE = true` at the top of `script.js`, open the view, and click where the marker should go. The console logs `{ x, y }` ready to paste into `MARKERS`.
 
 ## License
 

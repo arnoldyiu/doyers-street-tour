@@ -3,89 +3,93 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Topics Final Project - Doyers Street Tour</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Doyers Street Tour</title>
   <link rel="stylesheet" href="https://use.typekit.net/fpj0dsx.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-  <div id="clickhere" class="poabsolute" style="top: 120px; left: 50%; transform: translateX(400px); display: none;">
-    <img src="./assets/clickhere.webp" width="200">
-  </div>
-  <div id="mousePos"
-    style="width: 1512px; height: 851px; position: absolute; left: 50%; top: 0%; background: rgba(255,0,0,0); transform: translateX(-50%)">
-  </div>
-  <div class="minimapContainer" id="minimapContainer" style="display: none;">
-    <img class="minimap poabsolute" id="minimap" width="256">
-    <img class="minimapPointer poabsolute" id="minimapPointer" width="24">
-  </div>
-  <div class="infocard" id="infocard">
-    <div class="infocardContent">
-      <div class="infocardHead ffMetaWebProCondensed400">
-        <p class="infocardHeadContent" id="infocardHeadContent">PLACEHOLDER</p>
-      </div>
-      <div class="infocardBody">
-        <div class="infocardMain">
-          <img class="infocardImageUrl" id="infocardImageUrl">
-        </div>
-        <div class="infocardDescr ffMetaWebProCondensed400">
-          <!--where image description goes-->
-          <p class="infocardDescrContent" id="infocardDescrContent"></p>
-        </div>
-      </div>
-      <div class="flex" style="align-items: center; justify-content: center;">
-        <a target="_blank" rel="noopener noreferrer"
-          class="infocardBtn infocardBtnLearnMore ffMetaWebProCondensed400" id="infocardBtnLearnMore">
-          <p class="infocardBtnTxt">Learn More</p>
-        </a>
-        <button class="infocardBtn infocardBtnClose ffMetaWebProCondensed400"
-          id="infocardBtnClose">
-          <p class="infocardBtnTxt">Close</p>
+  <!-- Everything is laid out on a fixed 1512×851 stage that script.js scales to fit the window -->
+  <main id="stage" aria-label="Doyers Street tour" aria-describedby="instructions">
+    <p id="instructions" class="visuallyHidden">
+      A virtual walk down Doyers Street in New York's Chinatown. Use the arrow keys or W, A, S and D to look
+      around and walk, and the markers to learn about each place. Press Escape to close a place's card.
+    </p>
+    <!-- Screen readers announce changes written here, such as where you've walked to -->
+    <p id="announcer" class="visuallyHidden" aria-live="polite"></p>
+
+    <div id="mousePos"></div>
+
+    <div class="minimapContainer" id="minimapContainer" style="display: none;">
+      <img class="minimap poabsolute" id="minimap" width="256" alt="Map of Doyers Street">
+      <img class="minimapPointer poabsolute" id="minimapPointer" width="24" alt="">
+    </div>
+
+    <div id="clickhere" class="poabsolute" style="display: none;" aria-hidden="true">
+      <img src="./assets/clickhere.webp" width="200" alt="">
+    </div>
+
+    <div class="poabsolute buttonDayNight" id="buttonDayNight" style="display: none;">
+      <button aria-label="Switch to night">
+        <img id="buttonDayNightGraphic" width="128" alt="">
+      </button>
+    </div>
+    <div class="poabsolute buttonView buttonViewLeft" id="buttonViewLeftContainer" style="display: none;">
+      <div id="buttonViewLeft">
+        <button aria-label="Turn left">
+          <img class="buttonImageLeft" alt="">
         </button>
       </div>
-      <div class="infocardFoot"></div>
     </div>
-  </div>
+    <div class="poabsolute buttonView buttonViewRight" id="buttonViewRightContainer" style="display: none;">
+      <div id="buttonViewRight">
+        <button aria-label="Turn right">
+          <img class="buttonImageRight" alt="">
+        </button>
+      </div>
+    </div>
 
-  <div class="poabsolute buttonDayNight" id="buttonDayNight" style="display: none;">
-    <button>
-      <img id="buttonDayNightGraphic" width="128">
-    </button>
-  </div>
-  <div class="poabsolute buttonView" id="buttonViewLeftContainer" style="display: none;">
-    <div id="buttonViewLeft">
-      <button>
-        <img class="buttonImageLeft">
-      </button>
-    </div>
-  </div>
-  <div class="poabsolute buttonView" id="buttonViewRightContainer" style="display: none;">
-    <div id="buttonViewRight">
-      <button>
-        <img class="buttonImageRight">
-      </button>
-    </div>
-  </div>
+    <!-- Map markers (created by script.js from tour-data.js) -->
+    <div id="mapMarkers"></div>
 
-  <!-- Map markers (created by script.js from tour-data.js) -->
-  <div id="mapMarkers"></div>
-
-  <!-- Navigation Buttons -->
-
-  <div class="poabsolute xCenter buttonLocation buttonNavForward" id="buttonNavForward" style="display: none;">
-    <div>
-      <button><img class="buttonImageNavForward" id="buttonImageNavForward"></button>
+    <div class="poabsolute xCenter buttonNavForward" id="buttonNavForward" style="display: none;">
+      <button aria-label="Walk forward"><img class="buttonImageNavForward" alt=""></button>
     </div>
-  </div>
-  <div class="poabsolute xCenter buttonLocation buttonNavBackward" id="buttonNavBackward" style="display: none;">
-    <div>
-      <button><img class="buttonImageNavBackward" id="buttonImageNavBackward"></button>
+    <div class="poabsolute xCenter buttonNavBackward" id="buttonNavBackward" style="display: none;">
+      <button aria-label="Walk backward"><img class="buttonImageNavBackward" alt=""></button>
     </div>
-  </div>
+
+    <div class="infocard" id="infocard" role="dialog" aria-modal="true" aria-labelledby="infocardHeadContent"
+      aria-describedby="infocardDescrContent">
+      <div class="infocardContent">
+        <div class="infocardHead ffMetaWebProCondensed400">
+          <h2 class="infocardHeadContent" id="infocardHeadContent"></h2>
+        </div>
+        <div class="infocardBody">
+          <div class="infocardMain">
+            <img class="infocardImageUrl" id="infocardImageUrl" alt="">
+          </div>
+          <div class="infocardDescr ffMetaWebProCondensed400">
+            <p class="infocardDescrContent" id="infocardDescrContent"></p>
+          </div>
+        </div>
+        <div class="infocardButtons">
+          <a target="_blank" rel="noopener noreferrer" class="infocardBtn ffMetaWebProCondensed400"
+            id="infocardBtnLearnMore">
+            <span class="infocardBtnTxt">Learn More<span class="visuallyHidden"> (opens in a new tab)</span></span>
+          </a>
+          <button class="infocardBtn ffMetaWebProCondensed400" id="infocardBtnClose">
+            <span class="infocardBtnTxt">Close</span>
+          </button>
+        </div>
+        <div class="infocardFoot"></div>
+      </div>
+    </div>
+  </main>
 
   <script src="./tour-data.js"></script>
   <script src="./script.js"></script>
-
 </body>
 
 </html>

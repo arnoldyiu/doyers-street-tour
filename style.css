@@ -1,52 +1,115 @@
+/* ---- Base ---- */
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+}
+
 a, a:link, a:visited, a:hover, a:active {
   color: black;
   text-decoration: none;
 }
 
-body {
-  background: black url("./assets/loading_scr.jpg");
-  background-position: center 0;
-  background-repeat: no-repeat;
-  background-size: 1512px;
-  /*
-  transition: background-image 0.1s;
-  -webkit-transition: background-image 0.1s;
-  */
-}
-
 button {
   background-color: transparent;
   border: 0;
-  z-index: 950;
   box-sizing: content-box;
   padding: 0;
+  font: inherit;
 }
 
 button:enabled:hover {
   cursor: pointer;
 }
 
-html, body {
+p, h2 {
   margin: 0;
-  height: 100%;
+}
+
+/* Show where keyboard focus is (mouse clicks don't trigger this) */
+:focus-visible {
+  outline: 3px solid rgb(255, 200, 0);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Hidden on screen but still read by screen readers */
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
-p {
-  display: block;
-  margin-block-start: 0px;
-  margin-block-end: 0px;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  unicode-bidi: isolate;
+.poabsolute {
+  margin: 0;
+  position: absolute;
 }
 
-.alignCenter {
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  text-align: center;
+.xCenter {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ffMetaWebProCondensed400 {
+  font-family: "ff-meta-web-pro-condensed", "Arial Narrow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ---- Stage ----
+   Every position below is in pixels on a 1512×851 stage. script.js sets --scale
+   so the whole stage shrinks or grows to fit the window. */
+
+#stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1512px;
+  height: 851px;
+  transform: translate(-50%, -50%) scale(var(--scale, 1));
+  overflow: hidden;
+  background: black url("./assets/loading_scr.jpg") center / cover no-repeat;
+}
+
+/* Only used in DEV_MODE to log click coordinates */
+#mousePos {
+  position: absolute;
+  inset: 0;
+}
+
+/* ---- Minimap ---- */
+
+.minimapContainer {
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  transform: translateX(-720px);
+}
+
+#minimap {
+  content: url("./assets/minimap_day.webp");
+}
+
+.nighttime #minimap {
+  content: url("./assets/minimap_night.webp");
+}
+
+.minimapPointer {
+  content: url("./assets/minimap_figure.png");
+  top: -20px;
+}
+
+/* ---- Day/night button ---- */
+
+#clickhere {
+  top: 120px;
+  left: 50%;
+  transform: translateX(400px);
 }
 
 .buttonDayNight {
@@ -55,62 +118,32 @@ p {
   transform: translateX(600px);
 }
 
-
 #buttonDayNightGraphic {
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
+  transition: transform 0.2s;
   content: url("./assets/clock_button.webp");
 }
 
-
-#buttonDayNightGraphic:hover {
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
-
 .nighttime #buttonDayNightGraphic {
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  transition-duration: 0.2s;
   content: url("./assets/clock_button_Night.webp");
 }
 
-.nighttime #buttonDayNightGraphic:hover {
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
+button:hover #buttonDayNightGraphic,
+button:focus-visible #buttonDayNightGraphic {
   transform: rotate(180deg);
 }
 
-
+/* ---- Turn left/right buttons ---- */
 
 .buttonView {
   left: 50%;
   top: 360px;
 }
 
-.buttonView:has(#buttonViewLeft) {
-  float: right;
+.buttonViewLeft {
   transform: translateX(-756px);
 }
 
-.buttonView:has(#buttonViewRight) {
-  float: left;
+.buttonViewRight {
   transform: translateX(696px);
 }
 
@@ -130,6 +163,16 @@ button:enabled .buttonImageRight:active {
   content: url("./assets/btnR_press.png");
 }
 
+/* ---- Walk forward/backward buttons ---- */
+
+.buttonNavForward {
+  top: 560px;
+}
+
+.buttonNavBackward {
+  top: 640px;
+}
+
 .buttonImageNavForward {
   content: url("./assets/navBtnFw.png");
 }
@@ -146,37 +189,54 @@ button:enabled .buttonImageRight:active {
   content: url("./assets/navBtnBw_Night.png");
 }
 
-.buttonNavForward {
-  top: 560px;
-}
-
-.buttonNavBackward {
-  top: 640px;
-}
+/* ---- Map markers ---- */
 
 .buttonPosition {
   z-index: 0;
-  color: rgba(255, 0, 0, 0);
+  color: transparent;
   left: 50%;
-  -ms-transform: translateX(-44px);
   transform: translateX(-44px);
 }
 
-.buttonPosition>p {
+.buttonPosition > p {
   position: absolute;
   transform: translateX(40px);
   bottom: 0;
 }
 
-.ffMetaWebProCondensed400 {
-  font-family: "ff-meta-web-pro-condensed", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+.mapMarker {
+  content: url("./assets/mapmarker_0.5x.png");
 }
 
-.flex {
-  display: flex;
+.mapMarker:has(+ .mapMarkerMask:enabled:hover),
+.mapMarker:has(+ .mapMarkerMask:focus-visible) {
+  content: url("./assets/mapmarker_hover_0.5x.png");
 }
+
+/* The clickable area covers the pin shape inside the marker image */
+.mapMarkerMask > div {
+  width: 59px;
+  height: 82px;
+  top: 38px;
+  left: 15px;
+}
+
+.mapMarkerMask:enabled > div {
+  cursor: pointer;
+}
+
+/* The focus outline goes around the pin, not the empty button box */
+.mapMarkerMask:focus-visible {
+  outline: none;
+}
+
+.mapMarkerMask:focus-visible > div {
+  outline: 3px solid rgb(255, 200, 0);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---- Info card ---- */
 
 .infocard {
   display: none;
@@ -188,7 +248,45 @@ button:enabled .buttonImageRight:active {
   transform: translate(-50%, -50%);
   width: 480px;
   height: 451px;
-  background-color: rgba(255, 242, 242, 0.725)
+  background-color: rgba(255, 242, 242, 0.725);
+}
+
+.infocardHead {
+  height: 42px;
+  background-color: rgb(240, 108, 12);
+  color: white;
+  font-size: 22px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.infocardHeadContent {
+  width: 100%;
+  text-align: center;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.infocardImageUrl {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 219px;
+}
+
+.infocardDescr {
+  background-color: white;
+  padding: 24px 22px 30px 22px;
+  font-size: 18px;
+  line-height: 22px;
+  height: 88px;
+}
+
+.infocardButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .infocardBtn {
@@ -212,16 +310,6 @@ button:enabled .buttonImageRight:active {
   margin: auto 16px;
 }
 
-.infocardDescr {
-  background-color: white;
-  margin-block-start: 0px;
-  margin-block-end: 0px;
-  padding: 24px 22px 30px 22px;
-  font-size: 18px;
-  line-height: 22px;
-  height: 88px;
-}
-
 .infocardFoot {
   background-color: rgba(240, 108, 12, 0.475);
   width: 480px;
@@ -232,63 +320,13 @@ button:enabled .buttonImageRight:active {
   transform: translate(-50%, -50%);
 }
 
-.infocardHead {
-  height: 42px;
-  background-color: rgb(240, 108, 12);
-  color: white;
-  font-size: 22px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
+.nighttime .infocardContent {
+  background-color: rgb(44, 44, 44);
 }
 
-.infocardHeadContent {
-  width: 100%;
-  text-align: center;
-}
-
-.infocardImageUrl {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 219px;
-}
-
-.mapMarker {
-  content: url("./assets/mapmarker_0.5x.png");
-}
-
-.mapMarker:has(+ .mapMarkerMask:enabled:hover) {
-  content: url("./assets/mapmarker_hover_0.5x.png");
-}
-
-.mapMarkerMask:enabled>div {
-  cursor: pointer;
-  background-color: rgba(255, 0, 0, 0);
-  width: 59px;
-  height: 82px;
-  top: 38px;
-  left: 15px;
-}
-
-.minimapContainer {
-  position: absolute;
-  left: 50%;
-  top: 16px;
-  transform: translateX(-720px);
-}
-
-.minimapPointer {
-  content: url("./assets/minimap_figure.png");
-  top: -20px;
-}
-
-#minimap {
-  content: url("./assets/minimap_day.webp");
-}
-
-.nighttime #minimap {
-  content: url("./assets/minimap_night.webp");
+.nighttime .infocardHead {
+  background-color: rgb(180, 180, 180);
+  color: black;
 }
 
 .nighttime .infocardBody {
@@ -296,21 +334,8 @@ button:enabled .buttonImageRight:active {
   color: white;
 }
 
-.nighttime .infocardContent {
-  background-color: rgb(44, 44, 44);
-}
-
 .nighttime .infocardDescr {
   background-color: black;
-}
-
-.nighttime .infocardFoot {
-  background-color: rgb(44, 44, 44);
-}
-
-.nighttime .infocardHead {
-  background-color: rgb(180, 180, 180);
-  color: black;
 }
 
 .nighttime .infocardBtn {
@@ -322,20 +347,15 @@ button:enabled .buttonImageRight:active {
   z-index: 950;
 }
 
-.poabsolute {
-  margin: 0;
-  position: absolute;
-}
+/* ---- Reduced motion ---- */
 
-.xCenter {
-  left: 50%;
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
+@media (prefers-reduced-motion: reduce) {
+  #buttonDayNightGraphic {
+    transition: none;
+  }
 
-.yCenter {
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  button:hover #buttonDayNightGraphic,
+  button:focus-visible #buttonDayNightGraphic {
+    transform: none;
+  }
 }
-
